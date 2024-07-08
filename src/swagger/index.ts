@@ -108,7 +108,7 @@ export const swaggerDocument = {
                     },
                 },
                 responses: {
-                    200: {
+                    201: {
                         description: 'The added book',
                     },
                 },
@@ -119,16 +119,6 @@ export const swaggerDocument = {
                 responses: {
                     200: {
                         description: 'The list of books',
-                        content: {
-                            'application/json': {
-                                schema: {
-                                    type: 'array',
-                                    items: {
-                                        $ref: '#/components/schemas/Book',
-                                    },
-                                },
-                            },
-                        },
                     },
                 },
             },
@@ -249,7 +239,7 @@ export const swaggerDocument = {
                     },
                 },
                 responses: {
-                    200: {
+                    201: {
                         description: 'The registered user',
                     },
                 },

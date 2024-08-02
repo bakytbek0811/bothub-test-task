@@ -7,7 +7,6 @@ import { NotFoundException } from '../controllers/exceptions';
 import { Controller } from '../controllers';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
-import { swaggerDocument } from '../swagger';
 
 export class ServerApp {
     public app: Application;
@@ -25,10 +24,6 @@ export class ServerApp {
         this.app.use(cors());
         this.app.use(this.customCors);
         this.app.use(express.json());
-    }
-
-    private initSwagger(): void {
-        this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     }
 
     private customCors(_req: Request, res: Response, next: NextFunction): void {
@@ -51,8 +46,6 @@ export class ServerApp {
         this.initializeMiddlewares();
 
         this.initializeControllers(this.controllers);
-
-        this.initSwagger();
 
         this.app.use('*', (req: Request, _res: Response) => {
             console.log(`ROUTE NOT FOUND: ${req.baseUrl}`);
